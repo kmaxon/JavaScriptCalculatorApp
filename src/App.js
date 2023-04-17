@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import react, { useState } from 'react';
 import './App.css';
+import Buttons from "./components/Buttons";
+import Display from './components/Display';
 
 function App() {
+  const [expression, setExpression] = useState("");
+
+  const [number, setNumber] = useState("");
+
+  function handleNumber(input) {
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Display />
+      <Buttons />
     </div>
-  );
-}
+  )
+};
 
 export default App;
