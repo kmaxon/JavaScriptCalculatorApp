@@ -45,7 +45,7 @@ function Display(props) {
     }
 
     return (
-        <div style={displayStyle}>
+        <div style={displayStyle} id="display">
             <div style={expressionStyle}>
                 <p style={pStyle}>{props.expression}</p>
             </div>

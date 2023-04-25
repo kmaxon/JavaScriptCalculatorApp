@@ -67,7 +67,7 @@ function Buttons(props) {
 
     return (
         <div style={padStyle} >
-            <div id="all-clear">
+            <div id="clear">
                 <button style={allClearButtonStyle} onClick={() => props.allClearClick()}>AC</button>
             </div>
             <div id="divide">

@@ -74,7 +74,7 @@ function App() {
         // do nothing
       };
     // handles the initial input being a hyphen
-    } else if (hyphenRegex.test(input) && hyphenRegex.test(expression)) {
+    } else if (hyphenRegex.test(input)) {
       if (decimalRegex.test(keyClicked)) {
         handleInput(input + "0.");
         handleExpression(expression + "0.");
@@ -82,14 +82,17 @@ function App() {
         handleInput(input + keyClicked);
         handleExpression(expression + keyClicked);
       } else if (plusRegex.test(keyClicked)) {
-        handleInput("0");
-        handleExpression("");
+        handleInput(keyClicked);
+        handleExpression(expression.slice(0,-2) + " " + keyClicked);
       } else if (operatorMinusPlusRegex.test(keyClicked)) {
         // do nothing
       };
     // handle input being an operator while expression is more than that
     } else if (operatorRegex.test(input)) {
-      if (operatorRegex.test(keyClicked)) {
+      if (hyphenRegex.test(keyClicked)) {
+        handleInput(keyClicked);
+        handleExpression(expression + " " + keyClicked)
+      } else if (operatorMinusHyphenRegex.test(keyClicked)) {
         handleInput(keyClicked);
         handleExpression(expression.slice(0,-2) + " " + keyClicked);
       } else if (digitRegex.test(keyClicked)) {
