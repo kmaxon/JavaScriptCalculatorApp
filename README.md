@@ -4,7 +4,7 @@
 
 # Button component
 - this component will house all the buttons
-## nNumberpad subcomponent 
+## Numberpad subcomponent 
 - #0-9 and "." as buttons in the numberpad
 - this will update the state variables displaying the number and full expression
 - if a zero is typed as the first number, replace it in both state variables once a non-zero number is clicked
@@ -24,3 +24,51 @@
 
 # Display component
 - this will house the display for the complete expression and the current number being entered
+
+
+
+calculator logic:
+# equalSignRegex.test(expression)
+    - keyClicked = (+ | x | / | -)
+    - keyClicked = .
+    - keyClicked = 0-9
+# zeroRegex.test(input) && expression.length === 0
+    - keyClicked = .
+    - keyClicked = 0-9
+    - keyClicked = -
+    - keyClicked = (+ | x | /)
+# zeroRegex.test(input) && zeroRegex.test(expression)
+    - keyClicked = - | 1-9
+    - keyClicked = .
+    - keyClicked = (+ | x | /)
+    - keyClicked = 0
+# hyphenRegex.test(input) && hyphenRegex.test(expression)
+    - keyClicked = .
+    - keyClicked = 0-9
+    - keyClicked = +
+    - keyClicked = (- | * | /)
+# operatorRegex.test(input) && !operatorRegex.test(expression)
+    - keyClicked = operatorRegex
+    - keyClicked = 0-9
+    - keyClicked = .
+# handle input = positive or negative integer
+    - keyClicked = 0-9 | .
+    - keyClicked = operatorRegex
+# handle input = positive or negative float point number
+    - keyClicked = 0-9
+    - keyClicked = operatorRegex
+    - keyClicked = .
+
+
+allClearClick function:
+# split expression into an array of numbers and operators
+# get rid of any extra operator or decimal that might be on the end of expression
+# change string values to ints and float point numbers
+# find any (/ | *) and do those operations
+# find any (+ | -) and do those operations
+# store variable answer
+# if answer is a long decimal, shorten to length = 4 decimals
+# handle display
+    - handleInput(answer);
+    - handleExpression(expression + "=" + answer)
+
